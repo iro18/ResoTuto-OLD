@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Tutoriels Vidéos Résonance{% endblock %}
+
+{% block body %}
+
+
+<div class="content-body remarged-body-h">
+    <h1>{{ tutorial.title }}</h1>
+
+    <div class="single-tutoriel">
+      <p>{{ tutorial.content }}</p>
+
+      {{ tutorial.VideoLink|raw  }}
+    </div>
+</div>
+{% endblock %}

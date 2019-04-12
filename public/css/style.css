@@ -1,0 +1,37 @@
+
+
+
+
+/*** HEADER ***/
+header{
+	padding: 20px;
+	-webkit-clip-path: polygon(100% 0, 100% 18%, 30% 39%, 0 100%, 0 0);
+	clip-path: polygon(100% 0, 100% 18%, 30% 39%, 0 100%, 0 0);
+    background: #393939;
+    min-height: 300px;
+}
+.logo-header{
+	margin-left: 5%;
+    margin-top: 2%;
+}
+.logo-header img{
+	height: 150px
+}
+
+
+
+/**  BODY  **/
+ body{ background: #dedede; }
+
+ .content-body { margin: 1em auto; max-width: 1000px; width: 95%; font: 18px/1.5 sans-serif; }
+ .content-body h1 { color: #007294; border-bottom: 6px solid #ff8e00; }
+ @media all and (max-width: 1366px){  .content-body{ max-width: 900px } }
+
+ .remarged-body-h{ margin-top: -100px }
+
+ .disclaimer{ padding: 10px; border: 2px solid #007294; background: #ff8e0033; text-align: center; margin-top: 32px}
+
+/** FOOTER **/
+footer{ padding: 20px ; background: #ff8e00;}
+.footer-wrap{text-align: center;}
+.footer-wrap p { font: 18px/1.5 sans-serif; color: #007294 ; margin : 0 ; }

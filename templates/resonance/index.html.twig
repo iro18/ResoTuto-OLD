@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Tutoriels Vidéos Résonance{% endblock %}
+
+{% block body %}
+
+
+<div class="content-body remarged-body-h">
+    <h1>Tutoriels vidéos Résonance</h1>
+
+    Afin de mieux apréhender le système wordpress, vous avez accès à nos vidéos explicatives sur l'utilisation du système wordpress et du composant "Visual Composer" :
+    <ol>
+       {% for tutorial in tutorials %}
+		<li><a href='{{ path("shop_tutoriel", {"slug": tutorial.slug}) }}'>{{ tutorial.title }}</a></li>
+       {% endfor %}
+    </ol>
+
+    <div class="disclaimer"> 
+    	<p>Ces vidéos tutoriels sont à destination des clients de Résonance Communication, il n'est pas autorisé de les partager ou de les diffuser publiquement</p>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,21 @@
+easy_admin:
+    formats:
+        date:     'd/m/Y'
+        time:     'H:i'
+        datetime: 'd/m/Y H:i:s'
+    entities:
+        Tutorial:
+            class: App\Entity\Tutorial
+            list:
+                fields: ['id', 'Title', 'PublishAt', 'isPublish', 'slug']
+            form:
+                fields: ['Title', 'content', 'VideoLink', 'isPublish', 'PublishAt']
+        User:
+            class: App\Entity\User
+    site_name: 
+        'Administration Tutoriels Resonance'
+    user:
+        display_name: false
+        display_avatar: false
+    design:
+        brand_color: '#FF8E00'
