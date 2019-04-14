@@ -12,6 +12,7 @@ easy_admin:
                 fields: ['Title', 'content', 'VideoLink', 'isPublish', 'PublishAt']
         User:
             class: App\Entity\User
+            password_encoding: { algorithm: 'bcrypt'}
     site_name: 
         'Administration Tutoriels Resonance'
     user:
