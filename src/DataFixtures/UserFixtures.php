@@ -4,6 +4,7 @@ namespace App\DataFixtures;
 
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
+use App\Entity\User;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class UserFixtures extends Fixture
@@ -18,10 +19,11 @@ class UserFixtures extends Fixture
     public function load(ObjectManager $manager)
     {
     	$user = new User();
-
+        $user->setEmail('stalone12@hotmail.fr')
+        ->setRoles(['ROLE_ADMIN']);
         $user->setPassword($this->passwordEncoder->encodePassword(
              $user,
-             'the_new_password'
+             '123123'
          ));
         // $product = new Product();
          $manager->persist($user);
