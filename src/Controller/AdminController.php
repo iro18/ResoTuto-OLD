@@ -23,13 +23,13 @@ class AdminController extends BaseAdminController
         $this->passwordEncoder = $passwordEncoder;
     }
 
-    public function persistEntity($entity)
+    public function persistUserEntity($entity)
     {
         $this->encodePassword($entity);
         parent::persistEntity($entity);
     }
 
-    public function updateEntity($entity)
+    public function updateUserEntity($entity)
     {
         $this->encodePassword($entity);
         parent::updateEntity($entity);
