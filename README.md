@@ -8,3 +8,8 @@ Here is the TODO (main):
 - Add categories on tutorial (Wordpress / Prestashop then Basic / Advanced)
 - Add client account and theire own backoffice (don't know what to put inside)
 
+Others features (Secondary)
+- Add a payment System
+- Add the possiiblity to "complete" a tutorial (use ReactJs)
+- Go to Next Project (View)
+
