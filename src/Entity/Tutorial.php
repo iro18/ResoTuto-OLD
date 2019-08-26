@@ -48,6 +48,12 @@ class Tutorial
      */
     private $slug;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Category", inversedBy="tutorial", cascade={"persist", "remove"})
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $category;
+
 
     public function getId(): ?int
     {
@@ -122,6 +128,18 @@ class Tutorial
     public function setSlug(?string $Content): self
     {
         $this->slug = $this->getTitle();
+
+        return $this;
+    }
+
+    public function getCategory(): ?Category
+    {
+        return $this->category;
+    }
+
+    public function setCategory(Category $category): self
+    {
+        $this->category = $category;
 
         return $this;
     }

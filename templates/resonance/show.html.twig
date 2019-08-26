@@ -6,12 +6,12 @@
 
 
 <div class="content-body remarged-body-h">
+	<a class="retourbtn" href='javascript:history.back()'><img src='{{ asset('images/left-arrow-key.png') }}' /></a>
     <h1>{{ tutorial.title }}</h1>
-
     <div class="single-tutoriel">
       <p>{{ tutorial.content }}</p>
 
-      {{ tutorial.VideoLink|raw  }}
+      {{ tutorial.VideoLink|iframetuto|raw  }}
     </div>
 </div>
 {% endblock %}

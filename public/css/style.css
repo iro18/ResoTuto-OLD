@@ -35,3 +35,13 @@ header{
 footer{ padding: 20px ; background: #ff8e00;}
 .footer-wrap{text-align: center;}
 .footer-wrap p { font: 18px/1.5 sans-serif; color: #007294 ; margin : 0 ; }
+
+
+/** PAGE TUTORIELS **/
+.retourbtn{
+    position: fixed;
+    left: 0;
+    background: #ff8e00;
+    padding: 16px 18px;
+    height: 32px;
+}

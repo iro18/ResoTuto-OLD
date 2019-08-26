@@ -9,10 +9,16 @@ easy_admin:
             list:
                 fields: ['id', 'Title', 'PublishAt', 'isPublish', 'slug']
             form:
-                fields: ['Title', 'content', 'VideoLink', 'isPublish', 'PublishAt']
+                fields: ['Title', 'content', 'VideoLink', 'isPublish', 'PublishAt','category']
         User:
             class: App\Entity\User
             password_encoding: { algorithm: 'bcrypt'}
+        Category:
+            class: App\Entity\Category
+            list:
+                fields: ['id', 'name']
+            form:
+                fields: ['name']
     site_name: 
         'Administration Tutoriels Resonance'
     user:

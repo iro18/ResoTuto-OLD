@@ -9,9 +9,22 @@
     <h1>Tutoriels vidéos Résonance</h1>
 
     Afin de mieux apréhender le système wordpress, vous avez accès à nos vidéos explicatives sur l'utilisation du système wordpress et du composant "Visual Composer" :
+    
+    <h3> Basique </h3>
     <ol>
        {% for tutorial in tutorials %}
-		<li><a href='{{ path("shop_tutoriel", {"slug": tutorial.slug}) }}'>{{ tutorial.title }}</a></li>
+         {% if tutorial.category == "Basique" %}
+        <li><a href='{{ path("shop_tutoriel", {"slug": tutorial.slug}) }}'>{{ tutorial.title }}</a></li>
+         {% endif %}
+       {% endfor %}
+    </ol>
+
+       <h3> Avancé </h3>
+      <ol>
+       {% for tutorial in tutorials %}
+         {% if tutorial.category == "Avancé" %}
+        <li><a href='{{ path("shop_tutoriel", {"slug": tutorial.slug}) }}'>{{ tutorial.title }}</a></li>
+         {% endif %}
        {% endfor %}
     </ol>
 
