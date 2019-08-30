@@ -24,7 +24,8 @@ class UserFixtures extends Fixture
         $user->setPassword($this->passwordEncoder->encodePassword(
              $user,
              '123123'
-         ));
+         ))
+        ->setInscription(new \Datetime('now'));
         // $product = new Product();
          $manager->persist($user);
 

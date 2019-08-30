@@ -5,9 +5,10 @@
 {% block body %}
 
 
-<div class="content-body remarged-body-h">
+<div class="content-body remarged-body-h body-tuto">
 	<a class="retourbtn" href='javascript:history.back()'><img src='{{ asset('images/left-arrow-key.png') }}' /></a>
     <h1>{{ tutorial.title }}</h1>
+    <p class="date-publication">Publié le {{ tutorial.PublishAt|date('d-m-y') }}</p>
     <div class="single-tutoriel">
       <p>{{ tutorial.content }}</p>
 

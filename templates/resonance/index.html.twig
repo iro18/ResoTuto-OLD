@@ -9,25 +9,26 @@
     <h1>Tutoriels vidéos Résonance</h1>
 
     Afin de mieux apréhender le système wordpress, vous avez accès à nos vidéos explicatives sur l'utilisation du système wordpress et du composant "Visual Composer" :
-    
-    <h3> Basique </h3>
-    <ol>
-       {% for tutorial in tutorials %}
-         {% if tutorial.category == "Basique" %}
-        <li><a href='{{ path("shop_tutoriel", {"slug": tutorial.slug}) }}'>{{ tutorial.title }}</a></li>
-         {% endif %}
-       {% endfor %}
-    </ol>
 
-       <h3> Avancé </h3>
+    {% if is_granted('ROLE_USER') %}
+           
+      <h3> Basique </h3>
       <ol>
-       {% for tutorial in tutorials %}
-         {% if tutorial.category == "Avancé" %}
-        <li><a href='{{ path("shop_tutoriel", {"slug": tutorial.slug}) }}'>{{ tutorial.title }}</a></li>
-         {% endif %}
-       {% endfor %}
-    </ol>
+         {% for tutorial in tutorialsBasique %}
+          <li><a href='{{ path("shop_tutoriel", {"slug": tutorial.slug}) }}'>{{ tutorial.title }}</a></li>
+         {% endfor %}
+      </ol>
 
+         <h3> Avancé </h3>
+        <ol>
+         {% for tutorial in tutorialsAdvanced %}
+          <li><a href='{{ path("shop_tutoriel", {"slug": tutorial.slug}) }}'>{{ tutorial.title }}</a></li>
+         {% endfor %}
+      </ol>
+    {% else %}
+      <p>Vous possédez un compte Tutoriel Résonance ? <a href='{{path("app_login")}}'>Connectez-vous !</a> .<br /><br />
+       Vous ne possédez pas de compte et vous souhaitez avoir un accès aux vidéos ?<br /> Contactez nous par téléphone au : 04 68 76 00 31</p>
+    {% endif %}
     <div class="disclaimer"> 
     	<p>Ces vidéos tutoriels sont à destination des clients de Résonance Communication, il n'est pas autorisé de les partager ou de les diffuser publiquement</p>
     </div>

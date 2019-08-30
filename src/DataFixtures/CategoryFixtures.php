@@ -13,7 +13,11 @@ class CategoryFixtures extends Fixture
         $Category = new Category();
         $Category->setName('Basique');
 
+        $Category2 = new Category();
+        $Category2->setName('Avancé');
+
          $manager->persist($Category);
+         $manager->persist($Category2);
 
         $manager->flush();
     }

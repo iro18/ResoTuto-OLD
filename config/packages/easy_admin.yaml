@@ -13,6 +13,8 @@ easy_admin:
         User:
             class: App\Entity\User
             password_encoding: { algorithm: 'bcrypt'}
+            list:
+                fields: ['id', 'Username', 'Inscription']
         Category:
             class: App\Entity\Category
             list:

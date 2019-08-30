@@ -16,14 +16,14 @@ class AppExtension extends AbstractExtension
 
     public function IframedTuto($url)
     {
-        if(preg_match("#watch\?v=([^/. ]{11})#", $url ,$test)){
-            $id=$test[1];
+        if(preg_match("#watch\?v=([^/. ]{11})#", $url ,$IDyoutube)){
+            $id=$IDyoutube[1];
         }
         else{
             return "Erreur";
         }
         
-        return '<iframe src="https://www.youtube.com/embed/'.$id.'" width="560" height="315" frameborder="0" allowfullscreen="allowfullscreen"></iframe>';
+        return '<iframe src="https://www.youtube.com/embed/'.$id.'" width="100%" height="550" frameborder="0" allowfullscreen="allowfullscreen"></iframe>';
     }
 }
 ?>

@@ -17,6 +17,9 @@
     	</div>
     </header>
     <body>
+    {% if app.user %}
+        <a class="deconnexion" href="{{ path('app_logout') }}"><img src="{{ asset('images/logout.png')}}" /></a>
+    {% endif %}
         {% block body %}{% endblock %}
         {% block javascripts %}{% endblock %}
     </body>
