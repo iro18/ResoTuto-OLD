@@ -21,6 +21,9 @@
         <a class="deconnexion" href="{{ path('app_logout') }}"><img src="{{ asset('images/logout.png')}}" /></a>
     {% endif %}
         {% block body %}{% endblock %}
+    <div class="disclaimer"> 
+        <p>Ces vidéos tutoriels sont à destination des clients de Résonance Communication, il n'est pas autorisé de les partager ou de les diffuser publiquement</p>
+    </div>
         {% block javascripts %}{% endblock %}
     </body>
     <footer>

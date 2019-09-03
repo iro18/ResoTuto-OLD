@@ -9,7 +9,7 @@ easy_admin:
             list:
                 fields: ['id', 'Title', 'PublishAt', 'isPublish', 'slug']
             form:
-                fields: ['Title', 'content', 'VideoLink', 'isPublish', 'PublishAt','category']
+                fields: ['Title', {property: 'content' , type: 'fos_ckeditor' }, 'VideoLink', 'isPublish', 'PublishAt','category']
         User:
             class: App\Entity\User
             password_encoding: { algorithm: 'bcrypt'}
@@ -28,3 +28,4 @@ easy_admin:
         display_avatar: false
     design:
         brand_color: '#FF8E00'
+

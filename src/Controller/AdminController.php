@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AdminController as BaseAdminController;
 use App\Entity\User;
+use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class AdminController extends BaseAdminController
@@ -44,6 +45,14 @@ class AdminController extends BaseAdminController
         $user->setPassword(
             $this->passwordEncoder->encodePassword($user, $user->getPassword())
         );
+    }
+
+    /**
+     * @Route("/dashboard", name="admin_dashboard")
+     */
+    public function dashboard()
+    {
+        return $this->render('admin/dashboard.html.twig');
     }
 
 }

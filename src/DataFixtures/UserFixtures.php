@@ -26,7 +26,6 @@ class UserFixtures extends Fixture
              '123123'
          ))
         ->setInscription(new \Datetime('now'));
-        // $product = new Product();
          $manager->persist($user);
 
         $manager->flush();

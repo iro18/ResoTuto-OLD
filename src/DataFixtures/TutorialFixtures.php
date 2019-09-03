@@ -12,9 +12,8 @@ class TutorialFixtures extends Fixture
     public function load(ObjectManager $manager)
     {
         $repo = $manager->getRepository(Category::class);
-        //dd($repo);
         $category = $repo->findBy(['Name' => 'Basique']);
-        //dd($category);
+
         $tutorial = new Tutorial();
         $tutorial->setTitle('Tutoriel N°1')
         ->setContent('Dans cette vidéo on va apprendre à se connecter à wordpress.')

@@ -44,7 +44,8 @@ header{
 
  .remarged-body-h{ margin-top: -100px }
 
- .disclaimer{ padding: 10px; border: 2px solid #007294; background: rgba(255, 142, 0, 0.2); text-align: center; margin-top: 32px}
+ .disclaimer{ margin:0 auto;max-width: 1000px; width: 95%;padding: 10px; border: 2px solid #007294; background: rgba(255, 142, 0, 0.2); text-align: center; margin-top: 32px}
+ .disclaimer p{font-family: 'Open Sans';}
 
 /** FOOTER **/
 footer{ padding: 20px ; background: #ff8e00;}
