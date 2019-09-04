@@ -69,3 +69,14 @@ footer{ padding: 20px ; background: #ff8e00;}
     top: 0;
     right: 0;
 }
+.nextprevtuto{
+    border-top: 2px solid #f9f9f9;
+    margin-top: 10px;
+}
+.prevtuto,.nexttuto{
+     width: 49%;
+    display: inline-block;
+}
+.prevtuto p,.nexttuto p{
+    text-align: center;
+}

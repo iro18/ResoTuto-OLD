@@ -9,6 +9,7 @@ Actually Fonctionnal :
 - Create Users accounts
 - Listing of tutorials
 - Limited access for anonymous
+- Previous / Next tutorials
 
 Here is the TODO (Main): 
 - ~~Add Twig Filter "video" to convert youtube link in to iframe.~~ (Possibly complexify Regex)
@@ -22,11 +23,12 @@ Here is the TODO (Main):
 Others features (Secondary)
 - Add a payment System
 - Add the possiblity to "complete" a tutorial (use ReactJs)
-- Go to Next Project (View)
-- Add Order on Tutorials + OrderBy Query on Home
+- ~~Go to Next / Previous Project (View)~~
+- ~~Add Order on Tutorials + OrderBy Query on Home~~
 - ~~Add CkEditor on Content~~
 
 Style Todo (Tertiary)
 - Change Icons for : Deconnect / Previous page
 - Add maybe one video on Home for anonymous
 - Better explanations on Home 
+- Better design

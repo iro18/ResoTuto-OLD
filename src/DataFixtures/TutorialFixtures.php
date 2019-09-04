@@ -19,6 +19,7 @@ class TutorialFixtures extends Fixture
         ->setContent('Dans cette vidéo on va apprendre à se connecter à wordpress.')
         ->setPublishAt(new \Datetime('now'))
         ->setIsPublish(True)
+        ->setOrderMenu(1)
         ->setVideoLink('https://www.youtube.com/watch?v=D-qNageiKXg&list=RDD-qNageiKXg&start_radio=1')
         ->setCategory($category[0]);
          $manager->persist($tutorial);

@@ -27,8 +27,8 @@ class ResonanceController extends AbstractController
     	$repoCateg = $em->getRepository(Category::class);
         $IdBasique = $repoCateg->findOneBy(["Name" => "Basique"]);
         $IdAdvanced = $repoCateg->findOneBy(["Name" => "Avancé"]);
-        $tutorialsBasique = $repo->findBy(["isPublish" => true, "category" => $IdBasique], ['PublishAt' => 'ASC']);
-    	$tutorialsAdvanced = $repo->findBy(["isPublish" => true, "category" => $IdAdvanced], ['PublishAt' => 'ASC']);
+        $tutorialsBasique = $repo->findBy(["isPublish" => true, "category" => $IdBasique], ['order_menu' => 'ASC']);
+    	$tutorialsAdvanced = $repo->findBy(["isPublish" => true, "category" => $IdAdvanced], ['order_menu' => 'ASC']);
 
         return $this->render('resonance/index.html.twig', compact('tutorialsBasique','tutorialsAdvanced'));
     }
@@ -40,10 +40,15 @@ class ResonanceController extends AbstractController
     {
     	$repo = $this->getDoctrine()->getRepository(Tutorial::class);
     	$tutorial = $repo->findOneBySlug($slug);
+
+        $ActualOrder = $tutorial->getOrderMenu();
+        $NextTutorial = $repo->findOneNextTuto($ActualOrder);
+        $PrevTutorial = $repo->findOnePrevTuto($ActualOrder);
+
     	if(!$tutorial){
     		throw $this->createNotFoundException('Page inexistante ');
     	}
-    	return $this->render('resonance/show.html.twig',compact('tutorial'));
+    	return $this->render('resonance/show.html.twig',compact('tutorial','NextTutorial','PrevTutorial'));
     }
 
 

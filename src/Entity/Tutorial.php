@@ -54,6 +54,11 @@ class Tutorial
      */
     private $category;
 
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $order_menu;
+
 
     public function getId(): ?int
     {
@@ -140,6 +145,18 @@ class Tutorial
     public function setCategory(Category $category): self
     {
         $this->category = $category;
+
+        return $this;
+    }
+
+    public function getOrderMenu(): ?int
+    {
+        return $this->order_menu;
+    }
+
+    public function setOrderMenu(int $order_menu): self
+    {
+        $this->order_menu = $order_menu;
 
         return $this;
     }

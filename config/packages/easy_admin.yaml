@@ -4,18 +4,18 @@ easy_admin:
         time:     'H:i'
         datetime: 'd/m/Y H:i:s'
     entities:
-        Tutorial:
+        Tutoriels:
             class: App\Entity\Tutorial
             list:
-                fields: ['id', 'Title', 'PublishAt', 'isPublish', 'slug']
+                fields: ['id', 'Title', 'PublishAt', 'isPublish', 'slug','order_menu']
             form:
-                fields: ['Title', {property: 'content' , type: 'fos_ckeditor' }, 'VideoLink', 'isPublish', 'PublishAt','category']
-        User:
+                fields: ['Title', {property: 'content' , type: 'fos_ckeditor' },{property: 'OrderMenu' , type: 'number' }, 'VideoLink', 'isPublish', 'PublishAt','category']
+        Utilisateurs:
             class: App\Entity\User
             password_encoding: { algorithm: 'bcrypt'}
             list:
                 fields: ['id', 'Username', 'Inscription']
-        Category:
+        Catégories:
             class: App\Entity\Category
             list:
                 fields: ['id', 'name']

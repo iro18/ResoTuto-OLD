@@ -36,15 +36,27 @@ class TutorialRepository extends ServiceEntityRepository
     }
     */
 
-    /*
-    public function findOneBySomeField($value): ?Tutorial
+    
+    public function findOneNextTuto($value): ?Tutorial
     {
         return $this->createQueryBuilder('t')
-            ->andWhere('t.exampleField = :val')
+            ->andWhere('t.order_menu > :val')
+            ->setMaxResults(1)
+            ->setParameter('val', $value)
+            ->getQuery()
+            ->getOneOrNullResult()
+        ;
+    } 
+       public function findOnePrevTuto($value): ?Tutorial
+    {
+        return $this->createQueryBuilder('t')
+            ->andWhere('t.order_menu < :val')
+            ->setMaxResults(1)
+            ->orderBy('t.order_menu', 'DESC')
             ->setParameter('val', $value)
             ->getQuery()
             ->getOneOrNullResult()
         ;
     }
-    */
+    
 }
