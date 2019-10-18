@@ -7,14 +7,21 @@ easy_admin:
         Tutoriels:
             class: App\Entity\Tutorial
             list:
-                fields: ['id', 'Title', 'PublishAt', 'isPublish', 'slug','order_menu']
+                fields: ['id', 'Title', 'PublishAt', 'isPublish','order_menu']
             form:
                 fields: ['Title', {property: 'content' , type: 'fos_ckeditor' },{property: 'OrderMenu' , type: 'number' }, 'VideoLink', 'isPublish', 'PublishAt','category']
-        Utilisateurs:
+        User:
             class: App\Entity\User
             password_encoding: { algorithm: 'bcrypt'}
             list:
-                fields: ['id', 'Username', 'Inscription']
+                fields: ['id', 'Username', 'Inscription', {property: 'Active' , type: 'boolean' }]
+            edit:
+                fields:
+                    - email
+                    - { property: 'Active' , type: 'checkbox' }
+                    - Inscription
+                    - { property: 'plainPass' , type: 'text' , label: "Nouveau mot de passe"}
+
         Catégories:
             class: App\Entity\Category
             list:

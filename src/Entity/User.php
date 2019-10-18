@@ -38,6 +38,13 @@ class User implements UserInterface
      */
     private $Inscription;
 
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $active;
+
+    private $PlainPass;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -116,9 +123,9 @@ class User implements UserInterface
         // $this->plainPassword = null;
     }
 
-    public function getInscription(): string
+    public function getInscription(): ?\DateTimeInterface
     {
-        return $this->Inscription->format('D-m-y');
+        return $this->Inscription;
     }
 
     public function setInscription(\DateTimeInterface $Inscription): self
@@ -126,6 +133,30 @@ class User implements UserInterface
         $this->Inscription = $Inscription;
 
         return $this;
+    }
+
+    public function getActive(): ?bool
+    {
+        return $this->active;
+    }
+
+    public function setActive(bool $active): self
+    {
+        $this->active = $active;
+
+        return $this;
+    }
+
+    public function setPlainPass(string $PlainPass): self
+    {
+         $this->PlainPass = $PlainPass;
+
+         return $this;
+    }
+    
+        public function getPlainPass()
+    {
+         return $this->PlainPass;
     }
 
 }

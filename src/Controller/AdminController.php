@@ -31,7 +31,14 @@ class AdminController extends BaseAdminController
     }
 
     public function updateUserEntity($entity)
-    {
+    {   
+        if(empty($entity->getPlainPass())){
+            parent::updateEntity($entity);
+            return true;
+        }
+
+        $entity->setPassword($entity->getPlainPass());
+
         $this->encodePassword($entity);
         parent::updateEntity($entity);
     }

@@ -8,20 +8,23 @@ use App\Entity\User;
 use App\Entity\Tutorial;
 use App\Entity\Category;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use Symfony\Component\Security\Core\Security;
 
 class ResonanceController extends AbstractController
 {
-    private $encoder ;
+   /* private $encoder ;
 
     public function __construct(UserPasswordEncoderInterface $encoder){
         $this->encoder = $encoder ;
-    }
+    }*/
+    
     /**
      * @Route("/", name="home")
      */
-    public function index( /*UserPasswordEncoderInterface $encoder */ )
+    public function index( Security $security )
     {
 
+        $CurrentUser = $security->getUser();
     	$em  = $this->getDoctrine();
         $repo = $em->getRepository(Tutorial::class);
     	$repoCateg = $em->getRepository(Category::class);
@@ -30,14 +33,18 @@ class ResonanceController extends AbstractController
         $tutorialsBasique = $repo->findBy(["isPublish" => true, "category" => $IdBasique], ['order_menu' => 'ASC']);
     	$tutorialsAdvanced = $repo->findBy(["isPublish" => true, "category" => $IdAdvanced], ['order_menu' => 'ASC']);
 
-        return $this->render('resonance/index.html.twig', compact('tutorialsBasique','tutorialsAdvanced'));
+        return $this->render('resonance/index.html.twig', compact('tutorialsBasique','tutorialsAdvanced','CurrentUser'));
     }
 
     /**
-     * @Route("tutoriel/{slug}", name="shop_tutoriel")
+     * @Route("tutoriel/{slug}", name="show_tutoriel")
      */
     public function showTutorial($slug)
     {
+
+         $this->denyAccessUnlessGranted('ROLE_USER');
+
+         
     	$repo = $this->getDoctrine()->getRepository(Tutorial::class);
     	$tutorial = $repo->findOneBySlug($slug);
 
