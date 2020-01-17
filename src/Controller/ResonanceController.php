@@ -4,11 +4,14 @@ namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Repository\TutorialRepository;
+use App\Repository\CategoryRepository;
 use App\Entity\User;
 use App\Entity\Tutorial;
 use App\Entity\Category;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Security\Core\Security;
+use Symfony\Contracts\Cache\CacheInterface;
 
 class ResonanceController extends AbstractController
 {
@@ -21,17 +24,14 @@ class ResonanceController extends AbstractController
     /**
      * @Route("/", name="home")
      */
-    public function index( Security $security )
+    public function index( Security $security , TutorialRepository $RepoTutorial , CategoryRepository $RepoCategory)
     {
 
         $CurrentUser = $security->getUser();
-    	$em  = $this->getDoctrine();
-        $repo = $em->getRepository(Tutorial::class);
-    	$repoCateg = $em->getRepository(Category::class);
-        $IdBasique = $repoCateg->findOneBy(["Name" => "Basique"]);
-        $IdAdvanced = $repoCateg->findOneBy(["Name" => "Avancé"]);
-        $tutorialsBasique = $repo->findBy(["isPublish" => true, "category" => $IdBasique], ['order_menu' => 'ASC']);
-    	$tutorialsAdvanced = $repo->findBy(["isPublish" => true, "category" => $IdAdvanced], ['order_menu' => 'ASC']);
+        $IdBasique = $RepoCategory->findOneBy(["Name" => "Basique"]);
+        $IdAdvanced = $RepoCategory->findOneBy(["Name" => "Avancé"]);
+        $tutorialsBasique = $RepoTutorial->findBy(["isPublish" => true, "category" => $IdBasique], ['order_menu' => 'ASC']);
+    	$tutorialsAdvanced = $RepoTutorial->findBy(["isPublish" => true, "category" => $IdAdvanced], ['order_menu' => 'ASC']);
 
         return $this->render('resonance/index.html.twig', compact('tutorialsBasique','tutorialsAdvanced','CurrentUser'));
     }
@@ -39,17 +39,20 @@ class ResonanceController extends AbstractController
     /**
      * @Route("tutoriel/{slug}", name="show_tutoriel")
      */
-    public function showTutorial($slug)
+    public function showTutorial($slug, TutorialRepository $repo,CacheInterface $cache)
     {
 
-         $this->denyAccessUnlessGranted('ROLE_USER');
-
-         
-    	$repo = $this->getDoctrine()->getRepository(Tutorial::class);
+        # $this->denyAccessUnlessGranted('ROLE_USER');
+     
     	$tutorial = $repo->findOneBySlug($slug);
 
-        $ActualOrder = $tutorial->getOrderMenu();
+        $ActualOrder = $cache->get($keyTutorial = "tutorial_".md5($tutorial->getContent());, function($item) use ($tutorial){
+            $ActualOrder = $tutorial->getOrderMenu();
+            return $ActualOrder;
+        });
+        
         $NextTutorial = $repo->findOneNextTuto($ActualOrder);
+        
         $PrevTutorial = $repo->findOnePrevTuto($ActualOrder);
 
     	if(!$tutorial){
@@ -62,7 +65,6 @@ class ResonanceController extends AbstractController
 
     /* 
      Morceau de code pour inscription d'utilisateur avec injection de dépendance
-
          $em  = $this->getDoctrine()->getEntityManager();
         $user = new User;
         $encoded = $this->encoder->encodePassword($user, '111');

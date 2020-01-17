@@ -14,13 +14,13 @@ easy_admin:
             class: App\Entity\User
             password_encoding: { algorithm: 'bcrypt'}
             list:
-                fields: ['id', 'Username', 'Inscription', {property: 'Active' , type: 'boolean' }]
+                fields: ['id', 'Username', 'Inscription', 'active']
             edit:
                 fields:
-                    - email
+                    - { property: 'email' , type: 'email' }
                     - { property: 'Active' , type: 'checkbox' }
                     - Inscription
-                    - { property: 'plainPass' , type: 'text' , label: "Nouveau mot de passe"}
+                    - { property: 'plainPass' , type: 'password' , label: "Nouveau mot de passe"}
 
         Catégories:
             class: App\Entity\Category
